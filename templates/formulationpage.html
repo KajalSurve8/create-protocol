@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulation Page</title>
+    <script>
+        function passval()
+        {
+            var selecttext = document.getElementById('formtype').value;
+            localStorage.setItem("ddvalue", selecttext);
+            if (selecttext == "Tablets")
+            {
+              location.href="http://127.0.0.1:8000/tabletspage";
+            }
+            else if(selecttext == "Hard Gelatin Capsules")
+            {
+              location.href="http://127.0.0.1:8000/hardcapsulespage";
+            }
+            else if(selecttext == "Soft Gelatin Capsules")
+            {
+              location.href="http://127.0.0.1:8000/softcapsulespage";
+            }
+        }
+    </script>
+</head>
+<style>
+    body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topnav {
+    overflow: hidden;
+    background-color: #333;
+    }
+
+    .topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    }
+
+    .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    }
+
+    .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+    }
+
+    .submit-button {
+        background-color: #04AA6D;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        display: inline-block;
+        text-align: center;
+        }
+
+        .sidenav {
+        height: 100%; 
+        width: 160px; 
+        position: fixed; 
+        z-index: 1; 
+        top: 0; 
+        left: 0;
+        background-color: #333; 
+        overflow-x: hidden; 
+        padding-top: 50px;
+
+    }
+
+    .sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #f2f2f2;
+  display: block;
+}
+
+    .sidenav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+    .form-control {
+        border-radius: 5px;
+        width: 300px; 
+        height: 30px
+    }
+
+    input{
+		text-align: left;
+		width: 20em;
+	    }
+        
+    label{
+        width: 200px;
+        display: inline-block;
+    }
+
+</style>
+<body>
+        <div class="topnav">
+            <a href="/frequencypage">Frequency</a>
+            <a href="/tabletspage">Tests</a>
+            <a class="active" href="/formulationpage">Home</a>
+        </div>
+        <div class="sidenav">
+            <a href="/formulationpage">Create Protocol</a>
+            <!-- <a href="/testpage">Tests</a>
+            <a class="active" href="/frequencypage">Frequency</a> -->
+        </div>
+        <form align="center" method="POST">
+            {% csrf_token %}
+            <fieldset>
+            <h1>Formulation and batch details</h1><br>
+            <div class="row mb-3">
+              <label>General Information</label>
+              <input type="text" class="form-control" id="ginfo" name="ginfo">
+            <!-- </div><br><br>
+            <div class="row mb-3"> -->
+              <label>Product</label>
+                <input type="text" class="form-control" id="product" name="product">
+            </div><br><br>
+            <div class="row mb-3">
+                <label>Generic Name</label>
+                  <input type="text" class="form-control" id="gname" name="gname">
+              <!-- </div><br><br> -->
+              <!-- <div class="row mb-3"> -->
+                <label>Formulation Type</label>
+                <select name="formtype" id="formtype" class="form-control" name="formtype">
+                    <option>select</option>
+                    <option value="Tablets" id="tablets">Tablets</option>
+                    <option value="Hard Gelatin Capsules" id="hardcapsules">Hard Gelatin Capsules</option>
+                    <option value="Soft Gelatin Capsules" id="softcapsules">Soft Gelatin Capsules</option>
+                  </select>
+              </div><br><br>
+              <div class="row mb-3">
+                <label>Specification No.</label>
+                  <input type="text" class="form-control" id="specificno" name="specificno">
+              <!-- </div><br><br>
+              <div class="row mb-3"> -->
+                <label>Revision No.</label>
+                  <input type="text" class="form-control" id="revno" name="revno">
+              </div><br><br> 
+               <div class="row mb-3">
+                <label>Batch No.</label>
+                  <input type="text" class="form-control" id="batchno" name="batchno">
+              <!-- </div><br><br>
+              <div class="row mb-3"> -->
+                <label>Batch Size</label>
+                  <input type="text" class="form-control" id="batchsize" name="batchsize">
+              </div><br><br>
+              <div class="row mb-3">
+                <label>Manufacturing Date</label>
+                  <input type="date" class="form-control" id="mandate" name="mandate">
+              <!-- </div><br><br>
+              <div class="row mb-3"> -->
+                <label>Expiry Date</label>
+                  <input type="date" class="form-control" id="exdate" name="exdate">
+              </div><br><br>
+              <div class="row mb-3">
+                <label>Change Control No.</label>
+                  <input type="text" class="form-control" id="controlno" name="controlno">
+              <!-- </div><br><br>
+              <div class="row mb-3"> -->
+                <label>Effective Date</label>
+                  <input type="date" class="form-control" id="efdate" name="efdate">
+              </div><br><br>
+              <div class="row mb-3">
+                <label>Quantity Sampled</label>
+                  <input type="text" class="form-control" id="qtysampled" name="qtysampled">
+              <!-- </div><br><br>
+              <div class="row mb-3"> -->
+                <label>Date of Release</label>
+                  <input type="date" class="form-control" id="reldate" name="reldate">
+              </div><br><br>
+              <div class="row mb-3">
+                <label>Analysed By</label>
+                  <input type="text" class="form-control" id="analysedby" name="analysedby">
+              <!-- </div><br><br>
+              <div class="row mb-3"> -->
+                <label>Checked By</label>
+                  <input type="text" class="form-control" id="checkedby" name="checkedby">
+              </div><br><br>
+              <div class="row mb-3">
+                <label>Prepared By</label>
+                  <input type="text" class="form-control" id="preparedby" name="preparedby">
+              <!-- </div><br><br>
+              <div class="row mb-3"> -->
+                <label>Approved By</label>
+                  <input type="text" class="form-control" id="approvedby" name="approvedby">
+              </div><br><br>
+            <!-- <button type="submit" class="submit-button" onclick="passval()">Next Page</button> -->
+            <input type="button" class="submit-button" onclick="passval()" value="Next Page"></button>
+        </fieldset>
+          </form>
+</body>
+</html>
