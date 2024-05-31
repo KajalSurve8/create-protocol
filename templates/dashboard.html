@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: Arial;
+        background-color: white;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .image-stabicare {
+        /* width: 300px;
+        height: 50px;
+        margin-top: 15px; */
+        /* width: 210px;*/
+        height: 35px;
+        width: 150px;
+        /* position: absolute; */
+        position:fixed;
+        margin-left: 20px;;
+        margin-top: 15px;
+        left: 0;
+        top: 0;
+	}
+    .settingslogo{
+        position: absolute;
+        bottom: 1px;
+        right: 20%;
+        transform: translate(-50%, -50% );
+        width: 150px;
+        height: 90px;
+        background: whitesmoke;
+        border-radius: 5px;
+        color: black;
+    }
+    .settingslogo:hover{
+        border: 1px solid black;
+    }
+    .supportlogo{
+        position: absolute;
+        bottom: 1px;
+        right: 1%;
+        transform: translate(-50%, -50% );
+        width: 150px;
+        height: 90px;
+        background: whitesmoke;
+        border-radius: 5px;
+        color: black;
+    }
+    .supportlogo:hover{
+        border: 1px solid black;
+    }
+    .addprotocollogo{
+        position: absolute;
+        top: 150px;
+        left: 30%;
+        transform: translate(-50%, -50% );
+        width: 150px;
+        height: 90px;
+        background: whitesmoke;
+        border-radius: 5px;
+        color: black;
+    }
+    .addprotocollogo:hover{
+        border: 1px solid black;
+    }
+    .uploadresultlogo{
+        position: absolute;
+        top: 150px;
+        left: 50%;
+        transform: translate(-50%, -50% );
+        width: 150px;
+        height: 90px;
+        background: whitesmoke;
+        border-radius: 5px;
+        color: black;
+    }
+    .uploadresultlogo:hover{
+        border: 1px solid black;
+    }
+    .dataanalysislogo{
+        position: absolute;
+        bottom: 1px;
+        left: 30%;
+        transform: translate(-50%, -50% );
+        width: 150px;
+        height: 90px;
+        background: whitesmoke;
+        border-radius: 5px;
+        color: black;
+    }
+    .dataanalysislogo:hover{
+        border: 1px solid black;
+    }
+    .sampleprogresslogo{
+        position: absolute;
+        bottom: 1px;
+        left: 50%;
+        transform: translate(-50%, -50% );
+        width: 150px;
+        height: 90px;
+        background: whitesmoke;
+        border-radius: 5px;
+        color: black;
+    }
+    .sampleprogresslogo:hover{
+        border: 1px solid black;
+    }
+    nav {
+        width: 100%;
+        background: #333;
+        overflow: auto;
+        position:fixed;
+        top: 0;
+	}
+	
+	nav a {
+        width: 100px;
+        display: block;
+        padding: 15px 15px;
+        text-decoration: none;
+        font-family: Arial;
+        color: #f2f2f2;
+        text-align: center;
+	}
+	
+	nav a:hover {
+        background-color: #ddd;
+        color: black;
+    } 
+	
+	nav a.active {
+        background-color: grey;
+        color: white;
+    }
+  
+	ul {
+        padding: 0;
+        margin: 0 0 0 150px;
+        list-style: none;
+	}
+	
+	li {
+	    float: right;
+	}
+	
+	.sidenav {
+        height: 100%; 
+        width: 250px; 
+        position:fixed; 
+        z-index: 1; 
+        top: 58; 
+        /* top: 0; */
+        left: 0;
+        background-color:#333; 
+        overflow-x: hidden; 
+        padding-top: 50px;
+    }
+
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        color: white;
+        display: flex;
+        font-family: Arial;
+        align-items: center;
+    }
+
+    .sidenav p{
+        margin: 5px;
+        text-align: center;
+        margin-left: 15px;
+    }
+    .sidenav a:hover {
+        background-color: #ddd;
+        color: black;
+    } 
+    .sidenav a.active {
+        background-color: grey;
+        color: white;
+    }
+    /* .table-container { */
+        /* display: flex;   */
+        /* justify-content: space-between;  */
+        /* margin: 20px;
+        border: 1px solid black; 
+    }  */
+    .table-container {
+        position: absolute;
+        margin-left: 34%;
+        margin-top: 21%;
+        transform: translate(-50%, -50% );
+        width: 400px;
+        height: 150px;
+        /* background: whitesmoke; */
+        border-radius: 5px;
+        color: black;
+    }
+    .table,th, td{
+        border: 1px solid black; 
+        border-collapse: collapse;
+        margin-top: 6%;
+        /* margin-left: 24%;
+        margin-top: 15%; */
+    }
+    th, td { 
+        padding: 5px; 
+        text-align: center; 
+    } 
+    th { 
+        background-color: whitesmoke; 
+    }  
+    .table-container2 {
+        position: absolute;
+        /* margin-right: 1%; */
+        /* margin-top: 50%; */
+        transform: translate(-50%, -50% );
+        width: 400px;
+        height: 190px;
+        /* background: whitesmoke; */
+        border-radius: 5px;
+        color: black;
+        top: 160px;
+        left: 82%;
+    } 
+    /* .table2, th, td{ 
+        border: 1px solid black; 
+        border-collapse: collapse;
+        margin-top: 6%; */
+        /* position: flex; */
+        /* border: 1px solid black; 
+        border-collapse: collapse; */
+        /* margin-right: 6%;
+        top: 1%; */
+        /* top: 0;
+        right: 0; */
+        /* margin-bottom: 10%; */
+    /* } */
+    /* .my-heading {
+        text-align: center;
+    } */
+</style>
+<body>
+    <form align="center" method="POST">
+        {% csrf_token %}
+        {% load static %}
+        <nav>
+            <ul>
+                <li><a href="/protocol_page3">Samples</a></li>
+                <li><a href="/protocol_page2">Select Tests</a></li>
+                <li><a href="/protocol">Protocol Info</a></li>
+            </ul>
+        </nav>
+        <div class="sidenav">
+            <img class="image-stabicare" src="{% static 'Stabicarelims.png' %}" alt=" "><br><br>
+            <a class="active" href="/dashboard"><i class="fa-solid fa-chart-pie" style="color: white; font-size: 20px;"></i> <p>Dashboard</p></a>
+            <a href="/schedule"><i class="fa-regular fa-calendar-days" style="color: white; font-size: 20px;"></i> <p>Schedule</p></a>
+            <a href="/reportgeneration"><i class="fa-solid fa-file-pdf" style="color: white; font-size: 20px;"></i> <p>Report Generation</p></a> 
+            <a href="/updatesample"><i class="material-symbols-outlined" style="color: white; font-size: 20px;">update</i> <p>Update Sample</p></a>
+        </div>
+        <!-- <div class="my-heading"><h1>Hello, {{uname}}</h1></div> -->
+        <!-- Add Protocol -->
+        <a href="/protocol">
+            <div class="addprotocollogo" style="text-align: center;">
+                <i class="fa-solid fa-vial" style="font-size: 45px;"></i>
+                <h4>Add Protocol</h4>
+            </div>
+        </a>
+        <!-- Upload Results -->
+        <a href="/protocol">
+            <div class="uploadresultlogo" style="text-align: center;">
+                <i class="fa-solid fa-chart-line" style="font-size: 45px;"></i>
+                <h4>Upload Results</h4>
+            </div>
+        </a>
+        <!-- Data Analysis -->
+        <a href="/protocol">
+            <div class="dataanalysislogo" style="text-align: center;">
+                <i class="material-symbols-outlined" style="font-size: 45px;">query_stats</i>
+                <h4>Data Analysis</h4>
+            </div>
+        </a>
+        <!-- Sample Progress -->
+        <a href="/protocol">
+            <div class="sampleprogresslogo" style="text-align: center;">
+                <i class="material-symbols-outlined" style="font-size: 45px;">lab_panel</i>
+                <h4>Sample Progress</h4>
+            </div>
+        </a>
+        <!-- Settings -->
+        <a href="/protocol">
+            <div class="settingslogo" style="text-align: center;">
+                <i class="fa-solid fa-gear" style="font-size: 45px;"></i>
+                <h4>Settings</h4>
+            </div>
+        </a>
+        <!-- Contact Support -->
+        <a href="/protocol_page2">
+            <div class="supportlogo" style="text-align: center;">
+                <i class="fa-solid fa-headset" style="font-size: 45px;"></i>
+                <h4>Contact Support</h4>
+            </div>
+        </a>
+        <!-- Upcoming Samples -->
+        <div class="table-container">
+            <table align="center" class="table">
+                <tr>
+                    <th>Sample ID</th>
+                    <th>Schedule Date</th>
+                    <th>Comment</th>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </table>
+        </div>
+        <div class="table-container2">
+            <table align="center" class="table">
+                <tr>
+                    <th colspan="2">Today's Schedule ({{todaydate}})</th>
+                </tr>
+                <tr>
+                    <td>No. of Active Samples</td>
+                    <td>{{activesamples}}</td>
+                </tr>
+                <tr>
+                    <td>No. of Elapsed Samples</td>
+                    <td>{{elapsedsamples}}</td>
+                </tr>
+                <tr>
+                    <td>No. of Products</td>
+                    <td>{{totalproducts}}</td>
+                </tr>
+                <tr>
+                    <td>Upcoming Closure in One Month</td>
+                    <td>-</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

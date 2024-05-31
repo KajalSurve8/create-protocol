@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and Generate PDF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<style>
+	.image-stabicare {
+    /* width: 210px;*/
+    height: 35px;
+    width: 150px;
+	/* position: absolute; */
+    position:fixed;
+    margin-left: 20px;;
+	margin-top: 15px;
+    left: 0;
+    top: 0;
+	}
+	
+	body {
+	margin: 0;
+	padding: 0;
+	}
+	
+	nav {
+	width: 100%;
+	background: #333;
+	overflow: auto;
+    position:fixed;
+    top: 0;
+	}
+	
+	nav a {
+	width: 100px;
+	display: block;
+	padding: 15px 15px;
+	text-decoration: none;
+	font-family: Arial;
+	color: #f2f2f2;
+	text-align: center;
+	}
+	
+	nav a:hover {
+    background-color: #ddd;
+    color: black;
+    } 
+  
+	ul {
+	padding: 0;
+	margin: 0 0 0 150px;
+	list-style: none;
+	}
+	
+	li {
+	float: right;
+	}
+	
+	.sidenav {
+        height: 100%; 
+        width: 250px; 
+        position:fixed; 
+        z-index: 1; 
+        top: 58; 
+        /* top: 0; */
+        left: 0;
+        background-color:#333; 
+        overflow-x: hidden; 
+        padding-top: 50px;
+    }
+
+    .sidenav a {
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 17px;
+	color: white;
+	display: flex;
+        font-family: Arial;
+        align-items: center;
+    }
+    .sidenav p{
+        margin: 5px;
+        text-align: center;
+        margin-left: 15px;
+    }
+    .sidenav a:hover {
+    background-color: #ddd;
+    color: black;
+    } 
+
+    .sidenav a.active {
+        background-color: grey;
+        color: white;
+    }
+
+    td {
+        width: 250px;
+        text-align: left;
+    }
+    .spacer {
+    height: 30px;
+    }
+
+.search_term {
+  float: center;
+  padding: 6px;
+  border: 1px solid #333;  
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+button {
+    padding: 6px 10px;
+}
+button:hover {
+    cursor: pointer;
+    background: #ccc;
+}
+
+</style>
+<body>
+    <form align="center" action="/genprotocolreport" method="POST">
+        {% csrf_token %}
+        {% load static %}
+    <nav>
+        <ul>
+            <li><a href="/protocol_page3">Samples</a></li>
+            <li><a href="/protocol_page2">Select Tests</a></li>
+            <li><a href="/protocol">Protocol Info</a></li>
+        </ul>
+    </nav>
+    <div class="sidenav">
+        <img class="image-stabicare" src="{% static 'Stabicarelims.png' %}" alt=" "><br><br>
+        <a href="/dashboard"><i class="fa-solid fa-chart-pie" style="color: white; font-size: 20px;"></i> <p>Dashboard</p></a>
+        <a href="/schedule"><i class="fa-regular fa-calendar-days" style="color: white; font-size: 20px;"></i> <p>Schedule</p></a>
+        <a class="active" href="/reportgeneration"><i class="fa-solid fa-file-pdf" style="color: white; font-size: 20px;"></i> <p>Report Generation</p></a> 
+        <a href="/updatesample"><i class="material-symbols-outlined" style="color: white; font-size: 20px;">update</i> <p>Update Sample</p></a>
+    </div><br><br><br><br>
+    <h1>Search The Details</h1>
+    <input type="search" id="pid" name="pid" class="search_term" placeholder="Enter protocol ID..." align="center">
+    <button type="submit"><i class="fa fa-search"></i></button>
+    <!-- <p>{{context}}</p> -->
+    <!-- <p><a href="/genprotocolreport" target="_blank" rel="noopener noreferrer">Generate Report</a></p> -->
+    </form>
+    
+</body>
+</html>

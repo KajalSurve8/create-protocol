@@ -1,0 +1,236 @@
+{% load render_table from django_tables2 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <script src="https://unpkg.com/htmx.org@^1.7.0"></script>
+</head>
+<style>
+    .image-stabicare {
+        /* width: 210px;*/
+        height: 35px;
+        width: 150px;
+        /* position: absolute; */
+        position:fixed;
+        margin-left: 20px;;
+        margin-top: 15px;
+        left: 0;
+        top: 0;
+        }
+    nav {
+        width: 100%;
+        background: #333;
+        overflow: auto;
+        position:fixed;
+        top: 0;
+        }
+
+    nav a {
+        width: 100px;
+        display: block;
+        padding: 15px 15px;
+        text-decoration: none;
+        font-family: Arial;
+        color: #f2f2f2;
+        text-align: center;
+        }
+
+    nav a:hover {
+        background-color: #ddd;
+        color: black;
+        } 
+
+    ul {
+        padding: 0;
+        margin: 0 0 0 150px;
+        list-style: none;
+        }
+
+    li {
+        float: right;
+        }
+
+    .sidenav {
+        height: 100%; 
+        width: 250px; 
+        position:fixed; 
+        z-index: 1; 
+        top: 58; 
+        /* top: 0; */
+        left: 0;
+        background-color:#333; 
+        overflow-x: hidden; 
+        padding-top: 50px;
+    }
+
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        color: white;
+        display: flex;
+        font-family: Arial;
+        align-items: center;
+        }
+        .sidenav p{
+        margin: 5px;
+        text-align: center;
+        margin-left: 15px;
+    }
+    .sidenav a:hover {
+        background-color: #ddd;
+        color: black;
+        } 
+    .sidenav a.active {
+        background-color: grey;
+        color: white;
+        }
+
+    body { 
+        font-family: Arial, sans-serif; 
+        margin: 0; 
+        padding: 0; 
+        } 
+
+    .table-container { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 20px; 
+        } 
+        
+    table {
+        margin: 0 auto; /* Centers the table horizontally */
+        }
+
+    th, td { 
+        border: 1px solid #ddd; 
+        padding: 5px; 
+        text-align: center; 
+        } 
+
+    th { 
+        background-color: #f2f2f2; 
+        }  
+
+</style> 
+ <body>
+    <form align="center" method="POST">
+        {% csrf_token %}
+        {% load static %}
+    <nav>
+        <ul>
+            <li><a href="/protocol_page3">Samples</a></li>
+            <li><a href="/protocol_page2">Select Tests</a></li>
+            <li><a href="/protocol">Protocol Info</a></li>  
+        </ul>
+    </nav>
+    <div class="sidenav">
+        <img class="image-stabicare" src="{% static 'Stabicarelims.png' %}" alt=" "><br><br>
+        <a href="/dashboard"><i class="fa-solid fa-chart-pie" style="color: white; font-size: 20px;"></i> <p>Dashboard</p></a>
+        <a class="active" href="/schedule" class="btn" hx-post="/submit" hx-confirm="Total test ids for today: {{rows}}" hx-target="#response">
+            <i class="fa-regular fa-calendar-days" style="color: white; font-size: 20px;"></i> <p>Schedule</p></a>
+        <div id="response"></div>
+        <a href="/reportgeneration"><i class="fa-solid fa-file-pdf" style="color: white; font-size: 20px;"></i> <p>Report Generation</p></a>
+        <a href="/updatesample"><i class="material-symbols-outlined" style="color: white; font-size: 20px;">update</i> <p>Update Sample</p></a>
+    </div><br><br><br>
+    <h2>The Week</h2>
+    <table>
+        {% render_table table %}
+    </table>
+    </form>
+
+    
+    <!-- <div class="table-container">
+    <table class="table" align="center">
+        <tr>
+            <th>{{ today_date }}</th>
+        </tr>
+        {% for a in data0 %}
+        <tr>
+            <td>{{a}}</td>        
+        </tr>
+      {% endfor %}
+    </table> -->
+    
+
+     <!-- <table class="table">
+        <tr>
+            <th>{{ today_date1 }}</th>
+        </tr>
+        {% for a in data1 %}
+        <tr>
+            <td>{{ a }}</td>
+                     
+        </tr>
+      {% endfor %}
+    </table> -->
+
+    <!-- <table class="table">
+        <tr>
+            <th>{{ today_date2 }}</th>
+        </tr>
+        {% for a in data2 %}
+        <tr>
+            <td>{{ a }}</td>
+                     
+        </tr>
+      {% endfor %}
+    </table> -->
+
+    <!-- <table class="table">
+        <tr>
+            <th>{{ today_date3 }}</th>
+        </tr>
+        {% for a in data3 %}
+        <tr>
+            <td>{{ a }}</td>
+                     
+        </tr>
+      {% endfor %}
+    </table> -->
+
+    <!-- <table class="table">
+        <tr>
+            <th>{{ today_date4 }}</th>
+        </tr>
+        {% for a in data4 %}
+        <tr>
+            <td>{{ a }}</td>
+                     
+        </tr>
+      {% endfor %}
+    </table> -->
+
+    <!-- <table class="table">
+        <tr>
+            <th>{{ today_date5 }}</th>
+        </tr>
+        {% for a in data5 %}
+        <tr>
+            <td>{{ a }}</td>
+                     
+        </tr>
+      {% endfor %}
+    </table> -->
+
+    <!-- <table class="table">
+        <tr>
+            <th>{{ today_date6 }}</th>
+        </tr>
+        {% for a in data6 %}
+        <tr>
+            <td>{{ a }}</td>
+                     
+        </tr>
+      {% endfor %}
+    </table>  -->
+    <!-- </div> -->
+    
+</body>
+</html> 
+
+

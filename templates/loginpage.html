@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        font-family: Arial;
+        background-color: white;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50% );
+        width: 400px;
+        background: whitesmoke;
+        border-radius: 5px;
+    }
+    .center h1{
+        text-align: center;
+        padding: 0 0 20px 0;
+        border-bottom: 1px solid silver;
+    }
+    .center form{
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+    form .txt_field{
+        position: relative;
+        border-bottom: 2px solid #adadad;
+        margin: 30px 0;
+    }
+    .txt_field input{
+        width: 100%;
+        padding: 0 5px;
+        height: 40px;
+        font-size: 16px;
+        border: none;
+        background: none;
+        outline: none;
+    }
+    .txt_field label{
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        color: #adadad;
+        transition: translateY(-50%);
+        font-size: 16px;
+        pointer-events: none;
+    }
+    .pass{
+        margin: -5px 0 20px 5px;
+        color: #a6a6a6;
+        cursor: pointer;
+    }
+    .pass:hover{
+        text-decoration: underline;
+    }
+    input[type="submit"]{
+        width: 100%;
+        height: 50px;
+        border: 1px solid;
+        background: grey;
+        border-radius: 25px;
+        font-size: 18px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        outline: none;
+    }
+    input[type="submit"]:hover{
+        border-color: black;
+    }
+    .image-stabicare {
+        width: 500px;
+        height: 100px;
+        margin-top: 15px;
+	}
+    .settingslogo{
+        position: absolute;
+        bottom: 1px;
+        left: 41%;
+        transform: translate(-50%, -50% );
+        width: 150px;
+        height: 90px;
+        background: whitesmoke;
+        border-radius: 5px;
+        color: black;
+    }
+    .settingslogo:hover{
+        border: 1px solid black;
+    }
+    .supportlogo{
+        position: absolute;
+        bottom: 1px;
+        right: 30%;
+        transform: translate(-50%, -50% );
+        width: 150px;
+        height: 90px;
+        background: whitesmoke;
+        border-radius: 5px;
+        color: black;
+    }
+    .supportlogo:hover{
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <div style="text-align: center;">
+        {% load static %}
+        <img class="image-stabicare" src="{% static 'Stabicarelims.png' %}" alt=" ">
+    </div>
+    <div class="center">
+        <h1>User Login</h1>
+        <form action="/dashboard" method="POST">
+            {% csrf_token %}
+            <div class="txt_field">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="txt_field">
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="pass">Forgot Password?</div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <form method="POST">
+        <a href="#">
+            <div class="settingslogo" style="text-align: center;">
+            <i class="fa-solid fa-gear" style="font-size: 45px;"></i>
+                <h4>Settings</h4>
+            </div>
+        </a>
+        <a href="#">
+            <div class="supportlogo" style="text-align: center;">
+                <i class="fa-solid fa-headset" style="font-size: 45px;"></i>
+                <h4>Contact Support</h4>
+            </div>
+        </a>
+    </form>
+</body>
+</html>
